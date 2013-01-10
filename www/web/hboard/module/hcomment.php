@@ -40,7 +40,7 @@ $owner_id = $_a['ownerid'];
 
 	<? endforeach; ?>
 	<div class="span11 offset1" data-original-title="">
-		<form name="frm_hcomment_<?=$owner_id?>" method="post" action="/hboard/comment_add.php" class="row">
+		<form name="frm_hcomment_<?=$owner_id?>" method="post" action="./comment_add.php" class="row">
 			<input type="hidden" name="owner_id" value="<?=$owner_id?>" />
 			<div class="span11">
 				댓글 작성

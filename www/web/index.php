@@ -1,4 +1,6 @@
 <?php
+header('location: ./hboard');
+exit;
 //error_reporting(E_ALL);
 
 chdir('./hboard');
