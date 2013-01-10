@@ -3,6 +3,38 @@ require_once './include/startup.php';
 require_once DIR_LIB.'/HBoard.php';
 require_once DIR_LIB.'/HComment.php';
 
+echo date('Y-m-d H:i:s', time()).'<br />';
+
+
+echo strtotime(date('Y-m-d H:i:s', time())).'<br />';
+echo strtotime('2012-12-29 17:32:02').'<br /><br />';
+
+echo time_elapsed('2012-12-29 17:32:02');
+
+exit;
+$limit = 20;
+
+// 조건문 생성
+$where = '';
+if ( $offset_id ) {
+	$where = "WHERE id <= {$offset_id}";
+}
+
+// 더보기 유무
+$limit_over = $limit + 1;
+$sql = "SELECT * FROM htline.hboard
+		{$where}
+		ORDER BY id DESC
+		LIMIT {$limit_over}";
+$post_list = $g->db->fetch_all($sql);
+print_r($post_list);
+
+exit;
+$result = $g->db->fetch_all("SELECT * FROM htline.hboard");
+print_r($result);
+
+exit;
+echo md5(time());
 
 exit;
 $owner = 'hboard';

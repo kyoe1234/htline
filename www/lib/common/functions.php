@@ -8,37 +8,37 @@
  * @return array
  */
 function &sql_fetch_list($sql, $limit, $page, &$page_info) {
-    global $g;
+	global $g;
 
-    // SELECT 쿼리 전용
-    if ( !preg_match('/^SELECT/i', $sql) ) return false;
-    // SQL_CALC_FOUND_ROWS 추가
-    $sql = preg_replace('/^SELECT/i', 'SELECT SQL_CALC_FOUND_ROWS', $sql);
+	// SELECT 쿼리 전용
+	if ( !preg_match('/^SELECT/i', $sql) ) return false;
+	// SQL_CALC_FOUND_ROWS 추가
+	$sql = preg_replace('/^SELECT/i', 'SELECT SQL_CALC_FOUND_ROWS', $sql);
 
-    settype($limit, 'int');
-    settype($page, 'int');
+	settype($limit, 'int');
+	settype($page, 'int');
 
-    if ( $page < 1 ) $page = 1;
+	if ( $page < 1 ) $page = 1;
 
-    // limit 시작 위치
-    $start = ( $page - 1 ) * $limit;
+	// limit 시작 위치
+	$start = ( $page - 1 ) * $limit;
 
-    $sql .= " LIMIT {$start}, {$limit}";
+	$sql .= " LIMIT {$start}, {$limit}";
 
-    $result = $g->db->query($sql);
-    if ( !$result ) return array();
+	$result = $g->db->query($sql);
+	if ( !$result ) return array();
 
-    $list = array();
-    while ( $row = @mysqli_fetch_assoc($result) ) {
-        $list[] = $row;
-    }
+	$list = array();
+	while ( $row = @mysqli_fetch_assoc($result) ) {
+		$list[] = $row;
+	}
 
-    require_once DIR_LIB.'/common/PageTool.php';
+	require_once DIR_LIB.'/common/PageTool.php';
 
-    $rows_count = $g->db->found_rows();
-    $page_info = PageTool::cacl($rows_count, $page, $limit, 10);
+	$rows_count = $g->db->found_rows();
+	$page_info = PageTool::cacl($rows_count, $page, $limit, 10);
 
-    return $list;
+	return $list;
 }
 
 /**
@@ -49,9 +49,9 @@ function &sql_fetch_list($sql, $limit, $page, &$page_info) {
  * @return mixed
  */
 function import($path, $_a = null) {
-    unset($GLOBALS['_a']);
-    extract($GLOBALS);
-    return require $path;
+	unset($GLOBALS['_a']);
+	extract($GLOBALS);
+	return require $path;
 }
 
 /**
@@ -62,12 +62,12 @@ function import($path, $_a = null) {
  * @return string
  */
 function import_ob($path, $_a = null) {
-    ob_start();
-    import($path, $_a);
-    $content = ob_get_contents();
-    ob_end_clean();
+	ob_start();
+	import($path, $_a);
+	$content = ob_get_contents();
+	ob_end_clean();
 
-    return $content;
+	return $content;
 }
 
 /**
@@ -77,7 +77,7 @@ function import_ob($path, $_a = null) {
  * @param $_a mixed $path에 제공할 인수
  */
 function import_cache($path, $_a = null) {
-    echo $GLOBALS['g']->fncache->call('import_ob', array($path, $_a));
+	echo $GLOBALS['g']->fncache->call('import_ob', array($path, $_a));
 }
 
 /**
@@ -86,15 +86,15 @@ function import_cache($path, $_a = null) {
  * @return mixed
  */
 function atrim($var) {
-    if ( is_array($var) || is_object($var) ) {
-        foreach ( $var as &$v ) {
-            $v = atrim($v);
-        }
-    } else if ( is_scalar($var) ) {
-        $var = trim($var);
-    }
+	if ( is_array($var) || is_object($var) ) {
+		foreach ( $var as &$v ) {
+			$v = atrim($v);
+		}
+	} else if ( is_scalar($var) ) {
+		$var = trim($var);
+	}
 
-    return $var;
+	return $var;
 }
 
 /**
@@ -102,21 +102,21 @@ function atrim($var) {
  * @param $code int 상태 코드
  */
 function http_response_status_code($code) {
-    $code_list = array(
-        404 => 'Not Found',
-    );
+	$code_list = array(
+		404 => 'Not Found',
+	);
 
-    $message = $code_list[$code];
-    if ( !$message ) exit;
+	$message = $code_list[$code];
+	if ( !$message ) exit;
 
-    header("HTTP/1.1 {$code} {$message}");
-    $g->var['layout_head_title'] = "{$code} {$message} - 위드블로그";
+	header("HTTP/1.1 {$code} {$message}");
+	$g->var['layout_head_title'] = "{$code} {$message} - 위드블로그";
 
-    $args = array(
-        'content' => DIR_WEB."/module/{$code}.php",
-    );
-    import(DIR_WEB.'/layout/response_status_code.php', $args);
-    exit;
+	$args = array(
+		'content' => DIR_WEB."/module/{$code}.php",
+	);
+	import(DIR_WEB.'/layout/response_status_code.php', $args);
+	exit;
 }
 
 /**
@@ -124,21 +124,47 @@ function http_response_status_code($code) {
  * @param Warning $warning
  */
 function windowreceiver_response(Warning $warning) {
-    $url_static = URL_WEB_STATIC;
-    $json = str_replace("'", "\\'", $warning->json());
-    $json = str_replace('"', '\"', $json);
+	$url_static = URL_WEB_STATIC;
+	$json = str_replace("'", "\\'", $warning->json());
+	$json = str_replace('"', '\"', $json);
 echo <<<CODE
 <script type="text/javascript" src="{$url_static}/js/common.js"></script>
 <script type="text/javascript" src="{$url_static}/js/jquery-1.7.1.min.js"></script>
 <script type="text/javascript">
 require_once(URL_WEB_STATIC + '/js/WndReceiver.js');
 $(function() {
-    // {$warning->text}
-    var warning = eval('({$json})');
-    wndreceiver.response(warning);
+	// {$warning->text}
+	var warning = eval('({$json})');
+	wndreceiver.response(warning);
 });
 </script>
 CODE;
-    exit;
+	exit;
+}
+
+function time_elapsed($date, $unit) {
+	if ( !$unit ) {
+		$unit = array('지금막', '초전', '분전', '시간전', '일전', '주전');
+	}
+
+	$diff = time() - strtotime($date);
+
+	$str = '';
+	if ( $diff < 5 ) {
+		$str = $unit[0];
+	} else if ( $diff < 60 ) {
+		$str = $diff.' '.$unit[1];
+	} else if ( $diff < 3600 ) {
+		$str = floor($diff / 60).' '. $unit[2];
+	} else if ( $diff < 86400 ) {
+		$str = floor($diff / 3600).' '.$unit[3];
+	} else if ( $diff < 86400 * 7 ) {
+		// 1주일 이내
+		$str = floor($diff / 86400).' '.$unit[4];
+	} else {
+		$str = floor($diff / (86400 * 7)).' '.$unit[5];
+	}
+
+	return $str;
 }
 ?>
