@@ -12,7 +12,9 @@ $data = json_decode($json);
 	<?=$data->html?>
 </div>
 <div id="btn_post_more">
-	<input type="button" value="더 보기" class="btn btn-large btn-block btn-primary">
+	<? if ( $data->offset_id ): ?>
+	<input type="button" value="더 보기" class="btn btn-large btn-block btn-primary" />
+	<? endif; ?>
 </div>
 
 <script type="text/javascript">
