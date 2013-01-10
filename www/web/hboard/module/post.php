@@ -22,7 +22,7 @@ $(function () {
 	var offset_id = <?=$data->offset_id?>;
 	$('#btn_post_more').click(function () {
 		var data = {offset_id: offset_id};
-		$.getJSON('/hboard/post_more.php', data, function (obj) {
+		$.getJSON('./post_more.php', data, function (obj) {
 			offset_id = obj.offset_id;
 			$('#post_list').append(obj.html);
 			//wbprofilelayer.exec();
