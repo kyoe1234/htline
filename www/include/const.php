@@ -17,11 +17,11 @@ define('DIR_LIB', DIR_ROOT.'/lib'); // lib
 define('DIR_BATCH', DIR_ROOT.'/batch'); // batch
 
 // 웹
-define('DIR_WEB', DIR_ROOT.'/web'); // 웹 루트
-define('DIR_WEB_FILE', DIR_WEB.'/file'); // 웹접근 가능한 업로드 및 서비스가 생성한 파일
-define('DIR_WEB_TMP', DIR_WEB_FILE.'/tmp'); // 웹접근 가능한 업로드 및 서비스가 생성한 임시파일
+define('DIR_WEB', DIR_ROOT.'/www/web'); // 웹 루트
+define('DIR_WEB_FILE', DIR_WEB.'/www/file'); // 웹접근 가능한 업로드 및 서비스가 생성한 파일
+define('DIR_WEB_TMP', DIR_WEB_FILE.'/www/tmp'); // 웹접근 가능한 업로드 및 서비스가 생성한 임시파일
 // 모바일
-define('DIR_MOBILE', DIR_ROOT.'/mobile'); // 모바일 루트
+define('DIR_MOBILE', DIR_ROOT.'/www/mobile'); // 모바일 루트
 // 확장
 //define('DIR_AVATAR', DIR_WEB_FILE.'/avatar'); // 아바타
 //define('DIR_BANNER', DIR_WEB_FILE.'/banner'); // 배너광고

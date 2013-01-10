@@ -3,9 +3,7 @@ require_once './include/startup.php';
 
 $tmp = ( $_a ) ? $_a : $_GET;
 
-
 $offset_id = $tmp['offset_id'];
-
 
 $limit = 2;
 
