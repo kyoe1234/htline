@@ -6,7 +6,11 @@ $post_list = $_a['post_list'];
 if ( !$post_list ) return;
 
 ?>
-<? foreach ( $post_list as $post ): ?>
+<?
+foreach ( $post_list as $post ):
+	$sql = "SELECT COUNT(ownerid) AS cnt FROM htline.hcomment WHERE ownerid = '{$post['id']}'";
+	$comment_cnt = $g->db->fetch_val($sql);
+?>
 <div class="bs-docs-grid" style="margin-bottom: 15px">
 	<div class="row show-grid">
 		<div class="span12" data-original-title="">
@@ -32,6 +36,7 @@ if ( !$post_list ) return;
 					<span></span>
 				</div>
 				<div class="span2" style="text-align: right">
+					<span>[<?=$comment_cnt?>]</span>
 					<button class="btn dropdown-toggle btn-mini" data-toggle="dropdown" onclick="comment_show('<?=$post['id']?>')">comment <span class="caret"></span></button>
 				</div>
 			</div>

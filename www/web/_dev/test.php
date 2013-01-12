@@ -3,9 +3,12 @@ require_once './include/startup.php';
 require_once DIR_LIB.'/HBoard.php';
 require_once DIR_LIB.'/HComment.php';
 
+$sql = "SELECT COUNT(ownerid) AS cnt FROM htline.hcomment WHERE ownerid = 4";
+$comment_cnt = $g->db->fetch_val($sql);
+echo $comment_cnt;
+
+exit;
 echo date('Y-m-d H:i:s', time()).'<br />';
-
-
 echo strtotime(date('Y-m-d H:i:s', time())).'<br />';
 echo strtotime('2012-12-29 17:32:02').'<br /><br />';
 
