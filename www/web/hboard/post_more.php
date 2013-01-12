@@ -5,7 +5,7 @@ $tmp = ( $_a ) ? $_a : $_GET;
 
 $offset_id = $tmp['offset_id'];
 
-$limit = 2;
+$limit = 20;
 
 // 조건문 생성
 
