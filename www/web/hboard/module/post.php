@@ -1,6 +1,5 @@
 <?php
 // 글 목록을 가져온다.
-
 $args = array(
 	'offset_id' => 0,
 );
@@ -50,9 +49,9 @@ function comment_add (post_id) {
 
 function comment_show (id) {
 	if ( $('#hcmt_box_'+id).css('display') == 'none' ) {
-		$('#hcmt_box_'+id).show();
+		$('#hcmt_box_'+id).slideDown('fast');
 	} else {
-		$('#hcmt_box_'+id).hide();
+		$('#hcmt_box_'+id).slideUp('fast');
 	}
 }
 </script>
