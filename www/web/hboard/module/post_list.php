@@ -15,10 +15,10 @@ foreach ( $post_list as $post ):
 	<div class="row show-grid">
 		<div class="span12" data-original-title="">
 			<div class="row">
-				<div class="span11">
+				<div class="span10">
 					<span><?=mb_strimwidth($post['hid'], 0, 10)?></span>
 				</div>
-				<div class="span1" style="text-align: right">
+				<div class="span2" style="text-align: right">
 					<span><?=time_elapsed($post['createdate'])?></span>
 				</div>
 			</div>
