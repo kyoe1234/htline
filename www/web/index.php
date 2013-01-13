@@ -3,9 +3,9 @@ header('location: ./hboard');
 exit;
 //error_reporting(E_ALL);
 
-chdir('./hboard');
+//chdir('./hboard');
 
-require './include/startup.php';
+//require './include/startup.php';
 
 /*
 // 모바일 기기로 접속시
@@ -20,6 +20,5 @@ if ( MOBILE_AGENT ) {
 */
 
 //$g->var['layout_head_title'] = 'HTLine';
-
-require './layout/default.php';
+//require './layout/default.php';
 ?>

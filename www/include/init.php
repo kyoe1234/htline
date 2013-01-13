@@ -13,4 +13,6 @@ require_once DIR_LIB.'/GlobalObject.php';
 ## 전역 객체 ##
 global $g;
 $g = GlobalObject::singleton();
+
+$g->var['init_title'] = 'HTLine';
 ?>
