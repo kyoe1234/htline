@@ -13,8 +13,8 @@
 	<? require DIR_WEB.'/hboard/module/post.php'; ?>
 	</div>
 </div>
-
-<? //require DIR_WEB.'/admin/module/footer.php'; ?>
+<hr />
+<? require DIR_WEB.'/module/footer.php'; ?>
 
 </body>
 </html>
