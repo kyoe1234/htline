@@ -41,6 +41,7 @@ function comment_add (post_id) {
 	$.post(url, param, function (obj) {
 		if ( !obj.result ) {
 		} else {
+			$('#comment_cnt_'+post_id).text('['+obj.comment_cnt+']');
 			$('#hcmt_group_'+post_id).replaceWith(obj.html);
 			//wbprofilelayer.exec();
 		}

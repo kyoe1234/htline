@@ -31,7 +31,7 @@ foreach ( $post_list as $post ):
 					<span></span>
 				</div>
 				<div class="span2" style="text-align: right">
-					<span>[<?=$comment_cnt?>]</span>
+					<span id="comment_cnt_<?=$post['id']?>">[<?=$comment_cnt?>]</span>
 					<button class="btn dropdown-toggle btn-mini" data-toggle="dropdown" onclick="comment_show('<?=$post['id']?>')">comment <span class="caret"></span></button>
 				</div>
 			</div>
