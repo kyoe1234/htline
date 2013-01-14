@@ -1,12 +1,7 @@
 <?
-//require './include/startup.php';
-//require_once DIR_LIB.'/HBoard.php';
-
 $post_list = $_a['post_list'];
 if ( !$post_list ) return;
 
-?>
-<?
 foreach ( $post_list as $post ):
 	$sql = "SELECT COUNT(ownerid) AS cnt FROM htline.hcomment WHERE ownerid = '{$post['id']}'";
 	$comment_cnt = $g->db->fetch_val($sql);
