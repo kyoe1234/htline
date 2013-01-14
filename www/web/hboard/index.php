@@ -3,7 +3,23 @@
 
 require './include/startup.php';
 
+// 방문자 로그를 기록한다. (1분안에 재방문시엔 기록하지 않음)
+$log_time = date('Y-m-d H:i:s', strtotime('-1 minutes', time()));
+$sql = "SELECT ip FROM htline.visitorlog
+		WHERE ip = '{$_SERVER['REMOTE_ADDR']}'
+			AND createdate > '{$log_time}'";
+$ip = $g->db->fetch_val($sql);
+
+if ( !$ip ) {
+	$sql = "INSERT htline.visitorlog SET
+		ip = '{$_SERVER['REMOTE_ADDR']}',
+		createdate = NOW()";
+	$g->db->query($sql);
+}
+
+// 타이틀
 $g->var['layout_head_title'] = 'HTLine: 자유롭게 글을 남기세요.';
 
+// hboard 출력
 require './layout/default.php';
 ?>

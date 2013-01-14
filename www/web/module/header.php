@@ -1,3 +1,11 @@
+<?
+// 오늘 방문자수
+$today = date('Y-m-d');
+$sql = "SELECT count(*) AS cnt FROM htline.visitorlog
+		WHERE createdate >= '{$today} 00:00:00'
+				AND createdate <= '{$today} 23:59:59'";
+$today_cnt = $g->db->fetch_val($sql);
+?>
 <div class="navbar-wrapper">
 	<!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
 	<div class="container">
@@ -12,6 +20,7 @@
 				<a class="brand" href="./">HTLine</a>
 				<!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
 				<div class="nav-collapse collapse">
+					<span style="display: none"><?=$today_cnt?></span>
 					<ul class="nav">
 						<li class="active"><a href="#">Home</a></li>
 						<li><a href="#about">About</a></li>
