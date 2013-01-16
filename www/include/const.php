@@ -1,7 +1,7 @@
 <?php
 ## ETC ##
-define('DOMAIN_WEB', 'htline.net');
-define('DOMAIN_MOBILE', 'm.htline.net');
+define('DOMAIN_WEB', 'hoitalk.com');
+define('DOMAIN_MOBILE', 'm.hoitalk.com');
 define('COOKIE_DOMAIN', '.'.DOMAIN_WEB);
 
 // P3P 참고문서 http://support.microsoft.com/kb/290333/ko
