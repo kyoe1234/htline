@@ -1,3 +1,3 @@
 <footer>
-	<p style="text-align: center;">© HTLine <?=date('Y')?></p>
+	<p style="text-align: center;">© HoiTalk <?=date('Y')?></p>
 </footer>
