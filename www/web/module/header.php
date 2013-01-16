@@ -17,7 +17,7 @@ $today_cnt = $g->db->fetch_val($sql);
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="./">HTLine</a>
+				<a class="brand" href="./">HoiTalk</a>
 				<!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
 				<div class="nav-collapse collapse">
 					<span style="display: none"><?=$today_cnt?></span>
