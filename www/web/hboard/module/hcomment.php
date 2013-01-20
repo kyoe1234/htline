@@ -35,7 +35,7 @@ $owner_id = $_a['ownerid'];
 				<span style="color: #808080; padding: 0px 10px 0px 10px"><?=time_elapsed($comment['createdate'])?></span>
 			</div>
 		</div>
-		<p style="padding: 10px 10px 3px 10px"><?=nl2br($comment['content'])?></p>
+		<p style="padding: 10px 10px 3px 10px"><?=nl2br(autolink($comment['content']))?></p>
 	</div>
 
 	<? endforeach; ?>

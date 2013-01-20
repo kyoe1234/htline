@@ -167,4 +167,16 @@ function time_elapsed($date, $unit) {
 
 	return $str;
 }
+
+function autolink($str){
+	$homepage_pattern = "/([^\"\'\=\>])(mms|http|HTTP|ftp|FTP|telnet|TELNET)\:\/\/(.[^ \n\<\"\']+)/";
+	$str = preg_replace($homepage_pattern,"\\1<a href=\\2://\\3 target=_blank>\\2://\\3</a>", " ".$str);
+
+	// MAIL
+	//$str=eregi_replace("([\xA1-\xFEa-z0-9_-]+@[\xA1-\xFEa-z0-9-]+\.[a-z0-9-]+)"," \\1",$str);
+	//$str=str_replace("mailto:","mailto:",$str);
+	//$str=eregi_replace(" ([\xA1-\xFEa-z0-9_-]+@[\xA1-\xFEa-z0-9-]+\.[a-z0-9-]+)","\\1",$str);
+
+	return $str;
+}
 ?>

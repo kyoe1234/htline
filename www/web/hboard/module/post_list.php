@@ -21,7 +21,7 @@ foreach ( $post_list as $post ):
 	</div>
 	<div class="row show-grid">
 		<div class="span12" style="background: #e3e3e3; -webkit-border-radius: 5px;">
-			<p style="padding: 10px 10px 3px 10px;"><?=nl2br($post['content'])?></p>
+			<p style="padding: 10px 10px 3px 10px;"><?=nl2br(autolink($post['content']))?></p>
 		</div>
 	</div>
 	<div class="row show-grid">
