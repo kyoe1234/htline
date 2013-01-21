@@ -11,7 +11,7 @@ foreach ( $post_list as $post ):
 		<div class="span12" data-original-title="">
 			<div class="row">
 				<div class="span10">
-					<span><?=mb_strimwidth($post['hid'], 0, 10)?></span>
+					<span><a href="./post_view.php?post_id=<?=$post['id']?>"><?=mb_strimwidth($post['hid'], 0, 10)?></a></span>
 				</div>
 				<div class="span2" style="text-align: right">
 					<span><?=time_elapsed($post['createdate'])?></span>

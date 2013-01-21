@@ -1,6 +1,9 @@
 <?php
+$post_id = $_GET['post_id'] ? $_GET['post_id'] : '0';
+
 // 글 목록을 가져온다.
 $args = array(
+	'post_id' => $post_id,
 	'offset_id' => 0,
 );
 

@@ -3,15 +3,18 @@ require_once './include/startup.php';
 
 $tmp = ( $_a ) ? $_a : $_GET;
 
+$post_id = $tmp['post_id'];
 $offset_id = $tmp['offset_id'];
 
 $limit = 20;
 
 // 조건문 생성
-
-$where = '';
-if ( $offset_id ) {
+if ( $post_id ) {
+	$where = "WHERE id = {$post_id}";
+} else if ( $offset_id ) {
 	$where = "WHERE id <= {$offset_id}";
+} else {
+	$where = '';
 }
 
 // 더보기 유무

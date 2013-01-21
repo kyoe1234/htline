@@ -8,22 +8,11 @@
 <? require DIR_WEB.'/module/header.php'; ?>
 
 <div class="container">
-	<?
-	// 글 등록 폼
-	if ( $_a['post_form'] ) {
-		import($_a['post_form']);
-	}
-	?>
-
 	<div id="post_container">
-	<?
-	// 글 목록
-	if ( $_a['content'] ) {
-		import($_a['content']);
-	}
-	?>
+	<? require DIR_WEB.'/hboard/module/post.php'; ?>
 	</div>
 </div>
+
 <hr />
 <? require DIR_WEB.'/module/footer.php'; ?>
 
