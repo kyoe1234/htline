@@ -5,6 +5,14 @@ $sql = "SELECT count(*) AS cnt FROM htline.visitorlog
 		WHERE createdate >= '{$today} 00:00:00'
 				AND createdate <= '{$today} 23:59:59'";
 $today_cnt = $g->db->fetch_val($sql);
+
+// 메뉴 활성화
+$phpself = dirname($_SERVER['PHP_SELF']);
+if( strstr($phpself, '/about') ){
+	$menu_slt['about'] = 'active';
+} else {
+	$menu_slt['home'] = 'active';
+}
 ?>
 <div class="navbar-wrapper">
 	<!-- Wrap the .navbar in .container to center it within the absolutely positioned parent. -->
@@ -17,13 +25,13 @@ $today_cnt = $g->db->fetch_val($sql);
 					<span class="icon-bar"></span>
 					<span class="icon-bar"></span>
 				</a>
-				<a class="brand" href="./">HoiTalk</a>
+				<a class="brand" href="/">HoiTalk</a>
 				<!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
 				<div class="nav-collapse collapse">
 					<span style="display: none"><?=$today_cnt?></span>
 					<ul class="nav">
-						<li class="active"><a href="#">Home</a></li>
-						<li><a href="#about">About</a></li>
+						<li class="<?=$menu_slt['home']?>"><a href="/">Home</a></li>
+						<li class="<?=$menu_slt['about']?>"><a href="<?=URL_WEB?>/about">About</a></li>
 						<li><a href="#contact">Contact</a></li>
 						<!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
 						<li class="dropdown">

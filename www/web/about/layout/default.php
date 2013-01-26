@@ -4,17 +4,13 @@
 </head>
 
 <body>
-
 <? require DIR_WEB.'/module/header.php'; ?>
 
 <div class="container">
-	<div id="post_container">
-	<? require DIR_WEB.'/hboard/module/post.php'; ?>
-	</div>
+	<? require $_a['content']; ?>
 </div>
 
 <hr />
 <? require DIR_WEB.'/module/footer.php'; ?>
-
 </body>
 </html>
