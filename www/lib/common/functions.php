@@ -168,15 +168,12 @@ function time_elapsed($date, $unit) {
 	return $str;
 }
 
-function autolink($str){
-	$homepage_pattern = "/([^\"\'\=\>])(mms|http|HTTP|ftp|FTP|telnet|TELNET)\:\/\/(.[^ \n\<\"\']+)/";
-	$str = preg_replace($homepage_pattern,"\\1<a href=\\2://\\3 target=_blank>\\2://\\3</a>", " ".$str);
-
-	// MAIL
-	//$str=eregi_replace("([\xA1-\xFEa-z0-9_-]+@[\xA1-\xFEa-z0-9-]+\.[a-z0-9-]+)"," \\1",$str);
-	//$str=str_replace("mailto:","mailto:",$str);
-	//$str=eregi_replace(" ([\xA1-\xFEa-z0-9_-]+@[\xA1-\xFEa-z0-9-]+\.[a-z0-9-]+)","\\1",$str);
-
-	return $str;
+function autolink($contents) {
+	$pattern = "/(http|https|ftp|mms):\/\/[0-9a-z-]+(\.[_0-9a-z-]+)+(:[0-9]{2,4})?\/?";       // domain+port
+	$pattern .= "([\.~_0-9a-z-]+\/?)*";                                                                                                                                                                                             // sub roots
+	$pattern .= "(\S+\.[_0-9a-z]+)?";                                                                                                                                                                                                    // file & extension string
+	$pattern .= "(\?[_0-9a-z#%&=\-\+]+)*/i";                                                                                                                                                                               // parameters
+	$replacement = "<a href=\"\\0\" target=\"_blank\">\\0</a>";
+	return preg_replace($pattern, $replacement, $contents, -1);
 }
 ?>

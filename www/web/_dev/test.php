@@ -3,6 +3,21 @@ require_once './include/startup.php';
 require_once DIR_LIB.'/HBoard.php';
 require_once DIR_LIB.'/HComment.php';
 
+function autolink2($contents) {
+	$pattern = "/(http|https|ftp|mms):\/\/[0-9a-z-]+(\.[_0-9a-z-]+)+(:[0-9]{2,4})?\/?";       // domain+port
+	$pattern .= "([\.~_0-9a-z-]+\/?)*";                                                                                                                                                                                             // sub roots
+	$pattern .= "(\S+\.[_0-9a-z]+)?";                                                                                                                                                                                                    // file & extension string
+	$pattern .= "(\?[_0-9a-z#%&=\-\+]+)*/i";                                                                                                                                                                               // parameters
+	$replacement = "<a href=\"\\0\" target=\"_blank\">\\0</a>";
+	return preg_replace($pattern, $replacement, $contents, -1);
+}
+
+$content = '가나다http://daum.netㅋㅋㅋ 룰루랄라http://hoitalk.comㅇㄹㅇ';
+echo autoLink2($content);
+
+
+exit;
+
 $sql = "SELECT COUNT(ownerid) AS cnt FROM htline.hcomment WHERE ownerid = 4";
 $comment_cnt = $g->db->fetch_val($sql);
 echo $comment_cnt;
