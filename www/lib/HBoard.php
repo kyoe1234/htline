@@ -38,7 +38,7 @@ class HBoard {
 
 		// 차단된 ip인지 확인
 		$sql = "SELECT ip FROM ignoreip
-				WHERE ignore = 'Y'";
+				WHERE type = 'Y'";
 		$ignore_ip_list = $g->db->fetch_col($sql);
 		if ( in_array($_SERVER['REMOTE_ADDR'], $ignore_ip_list) ) {
 			return Warning::make($warning, 0, 'hid', '오류가 발생했습니다.');
