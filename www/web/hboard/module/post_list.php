@@ -27,7 +27,7 @@ foreach ( $post_list as $post ):
 		<div class="span12">
 			<div class="row">
 				<div class="span11" style="background: #e3e3e3; -webkit-border-radius: 5px; margin-left: 30px; padding-right: 70px">
-					<p style="padding: 10px 10px 3px 10px;"><?=nl2br(autolink($post['content']))?></p>
+					<p style="padding: 10px 10px 3px 10px;"><?=nl2br(autolink(htmlspecialchars($post['content'])))?></p>
 				</div>
 			</div>
 		</div>
