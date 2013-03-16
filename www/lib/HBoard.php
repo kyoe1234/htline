@@ -21,11 +21,12 @@ class HBoard {
 	/**
 	 * @brief 추가
 	 * @param $hid string 익명을위한 해쉬코드
+	 * @param $title string 제목 (필수 입력사항 아님)
 	 * @param $content string 글
 	 * @param $warning object Warning 객체 참조
 	 * @return int htline.hboard.id
 	 */
-	public static function add($hid, $content, &$warning = null) {
+	public static function add($hid, $title, $content, &$warning = null) {
 		global $g;
 
 		if ( !$hid ) {
@@ -49,6 +50,7 @@ class HBoard {
 		$g->db->query("
 			INSERT htline.hboard SET
 				hid = '{$hid}',
+				title = '{$title}',
 				content = '{$content}',
 				blind = 'N',
 				ip = '{$_SERVER['REMOTE_ADDR']}',

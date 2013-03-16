@@ -21,6 +21,7 @@ $data = json_decode($json);
 
 <script type="text/javascript">
 $(function () {
+	var post_id = <?=$_GET['post_id']?>;
 	var offset_id = <?=$data->offset_id?>;
 	$('#btn_post_more').click(function () {
 		var data = {offset_id: offset_id};
@@ -34,6 +35,12 @@ $(function () {
 		});
 		return false;
 	});
+
+	// post_id가 있으면 글의 페이지 이무로 댓글창을 펼친다.
+	if ( post_id ) {
+		comment_show(post_id);
+	}
+
 });
 
 function comment_add (post_id) {

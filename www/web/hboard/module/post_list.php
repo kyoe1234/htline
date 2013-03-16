@@ -11,7 +11,11 @@ foreach ( $post_list as $post ):
 		<div class="span12" data-original-title="">
 			<div class="row">
 				<div class="span10">
+					<? if ( $post['title'] ): ?>
+					<span><a href="./post_view.php?post_id=<?=$post['id']?>"><?=htmlspecialchars($post['title'])?></a>&nbsp;&nbsp;-&nbsp;&nbsp;<?=mb_strimwidth($post['hid'], 0, 10)?></span>
+					<? else: ?>
 					<span><a href="./post_view.php?post_id=<?=$post['id']?>"><?=mb_strimwidth($post['hid'], 0, 10)?></a></span>
+					<? endif; ?>
 				</div>
 				<div class="span2" style="text-align: right">
 					<span><?=time_elapsed($post['createdate'])?></span>
@@ -20,8 +24,12 @@ foreach ( $post_list as $post ):
 		</div>
 	</div>
 	<div class="row show-grid">
-		<div class="span12" style="background: #e3e3e3; -webkit-border-radius: 5px;">
-			<p style="padding: 10px 10px 3px 10px;"><?=nl2br(autolink($post['content']))?></p>
+		<div class="span12">
+			<div class="row">
+				<div class="span11" style="background: #e3e3e3; -webkit-border-radius: 5px; margin-left: 30px; padding-right: 70px">
+					<p style="padding: 10px 10px 3px 10px;"><?=nl2br(autolink($post['content']))?></p>
+				</div>
+			</div>
 		</div>
 	</div>
 	<div class="row show-grid">
