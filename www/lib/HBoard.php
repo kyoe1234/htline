@@ -36,6 +36,15 @@ class HBoard {
 			return Warning::make($warning, 0, 'content', '내용을 입력해 주세요');
 		}
 
+		// 차단된 ip인지 확인
+		$sql = "SELECT ip FROM ignoreip
+				WHERE ignore = 'Y'";
+		$ignore_ip_list = $g->db->fetch_col($sql);
+		if ( in_array($_SERVER['REMOTE_ADDR'], $ignore_ip_list) ) {
+			return Warning::make($warning, 0, 'hid', '오류가 발생했습니다.');
+		}
+
+		// 글 등록
 		$content = $g->db->escape($content);
 		$g->db->query("
 			INSERT htline.hboard SET
