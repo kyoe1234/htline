@@ -21,8 +21,8 @@ $data = json_decode($json);
 
 <script type="text/javascript">
 $(function () {
-	var post_id = <?=$_GET['post_id']?>;
-	var offset_id = <?=$data->offset_id?>;
+	var post_id = '<?=$_GET['post_id']?>';
+	var offset_id = '<?=$data->offset_id?>';
 	$('#btn_post_more').click(function () {
 		var data = {offset_id: offset_id};
 		$.getJSON('./post_more.php', data, function (obj) {
@@ -40,7 +40,6 @@ $(function () {
 	if ( post_id ) {
 		comment_show(post_id);
 	}
-
 });
 
 function comment_add (post_id) {
