@@ -2,6 +2,8 @@
 <meta name="keywords" content="호이톡,호이토크,hoitalk,게시판,익명게시판,익명타임라인,자유게시판,비밀이야기" />
 <meta name="description" content="자유롭게 글을 남길수 있는 공간입니다. 직장 또는 학교에서 답답하고 쌓였던 울분을 터트려 보세요. 나만 알고 있기엔 아까운 정보들을 공유하세요." />
 <link rel="stylesheet" href="<?=URL_WEB_STATIC?>/bootstrap/css/bootstrap.css" />
+<link rel="stylesheet" href="<?=URL_WEB_STATIC?>/css/common.css" />
+
 <!-- <link rel="shortcut icon" href="<?=URL_WEB_STATIC?>/image/favicon_gray.ico" /> -->
 <script src="<?=URL_WEB_STATIC?>/js/jquery-1.8.3.min.js"></script>
 
