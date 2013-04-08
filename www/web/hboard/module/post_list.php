@@ -6,7 +6,7 @@ foreach ( $post_list as $post ):
 	$sql = "SELECT COUNT(ownerid) AS cnt FROM htline.hcomment WHERE ownerid = '{$post['id']}'";
 	$comment_cnt = $g->db->fetch_val($sql);
 ?>
-<div class="bs-docs-grid" style="margin-bottom: 15px">
+<div class="bs-docs-grid content-row" style="margin-bottom: 15px">
 	<!-- title, time -->
 	<div class="row">
 		<div class="span10">

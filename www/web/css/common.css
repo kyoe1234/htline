@@ -17,10 +17,12 @@ article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
 time, mark, audio, video {
+	/*
 	margin: 0;
 	padding: 0;
 	border: 0;
 	vertical-align: baseline;
+	*/
 }
 
 /* HTML5 display-role reset for older browsers */
@@ -30,7 +32,7 @@ footer, header, hgroup, menu, nav, section {
 }
 
 body {
-	line-height: 1;
+	/* line-height: 1; */
 }
 
 ol, ul {
@@ -64,35 +66,26 @@ img {
 	vertical-align:middle;
 }
 
-.wrap {
-	margin: 0px auto;
-}
-
 ul {
 list-style-type: none;
 margin: 0;
 padding: 0;
 }
 
-/* GNB */
-.GNB {
-	background: white;
-	border-bottom: 1px solid #cfcfcf;
-	height: 25px;
-	font-size: 12px;
-	letter-spacing: -1px;
-}
-
 /* header */
 .header {
+	/*
 	margin-top: 12px;
 	z-index: 1000;
+	*/
 }
 
 /* footer */
 .footer {
+	/*
 	background: white;
 	border-top: 1px solid #cacaca;
+	*/
 }
 
 
