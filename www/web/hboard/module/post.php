@@ -1,14 +1,17 @@
 <?php
 $post_id = $_GET['post_id'] ? $_GET['post_id'] : '0';
+$user = $_GET['user'] ? $_GET['user'] : '';
 
 // 글 목록을 가져온다.
 $args = array(
 	'post_id' => $post_id,
 	'offset_id' => 0,
+	'user' => $user,
 );
 
 $json = import_ob(DIR_WEB.'/hboard/post_more.php', $args);
 $data = json_decode($json);
+
 ?>
 <div id="post_list">
 	<?=$data->html?>
@@ -64,4 +67,5 @@ function comment_show (id) {
 		$('#hcmt_box_'+id).slideUp('fast');
 	}
 }
+
 </script>

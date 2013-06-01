@@ -31,7 +31,12 @@ foreach ( $post_list as $post ):
 		<div class="span10">
 			<span></span>
 		</div>
+
 		<div class="span2" style="text-align: right">
+			<? if ( $_a['user'] == 'momohoi' ): ?>
+				<a href="./post_block.php?user=<?=$_a['user']?>&ip=<?=$post['ip']?>" >block</a>
+			<? endif;?>
+
 			<span id="comment_cnt_<?=$post['id']?>">[<?=$comment_cnt?>]</span>
 			<button class="btn dropdown-toggle btn-mini" data-toggle="dropdown" onclick="comment_show('<?=$post['id']?>')">comment <span class="caret"></span></button>
 		</div>

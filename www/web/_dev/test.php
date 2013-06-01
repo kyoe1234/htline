@@ -3,6 +3,25 @@ require_once './include/startup.php';
 require_once DIR_LIB.'/HBoard.php';
 require_once DIR_LIB.'/HComment.php';
 
+if ( preg_match('/.*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*/', 'aaabbbccc') ) {
+		    echo 'aa';
+} else {
+		    echo 'bb';
+}
+
+exit;
+$ignore_ip_list = array('218.107.132.66','202.122.130.8','122.154.97.126','61.55.141.11');
+foreach ( $ignore_ip_list as $ip ) {
+	$sql = "INSERT ignoreip SET
+				ip = '{$ip}',
+				type = 'Y',
+				createdate = NOW()";
+	//$g->db->query($sql);
+	echo $ip."\n";
+}
+
+
+exit;
 function autolink2($contents) {
 	$pattern = "/(http|https|ftp|mms):\/\/[0-9a-z-]+(\.[_0-9a-z-]+)+(:[0-9]{2,4})?\/?";       // domain+port
 	$pattern .= "([\.~_0-9a-z-]+\/?)*";                                                                                                                                                                                             // sub roots

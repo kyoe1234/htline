@@ -37,6 +37,10 @@ class HBoard {
 			return Warning::make($warning, 0, 'content', '내용을 입력해 주세요');
 		}
 
+		if ( !preg_match('/.*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*/', $content) ) {
+		    return Warning::make($warning, 0, 'content', '잘못된 접근입니다.');
+		}
+
 		// 차단된 ip인지 확인
 		$sql = "SELECT ip FROM ignoreip
 				WHERE type = 'Y'";
