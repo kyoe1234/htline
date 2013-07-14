@@ -3,10 +3,11 @@ require_once './include/startup.php';
 require_once DIR_LIB.'/HBoard.php';
 require_once DIR_LIB.'/HComment.php';
 
-if ( preg_match('/.*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*/', 'aaabbbccc') ) {
-		    echo 'aa';
+//if ( preg_match('/.*[가-힣]+.*/', 'aaabbbc發cc') ) {
+if(preg_match("/[\xA1-\xFE][\xA1-\xFE]/", 'aaabbbccc')) { 
+    echo 'aa';
 } else {
-		    echo 'bb';
+    echo 'bb';
 }
 
 exit;

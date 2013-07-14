@@ -37,7 +37,7 @@ class HBoard {
 			return Warning::make($warning, 0, 'content', '내용을 입력해 주세요');
 		}
 
-		if ( !preg_match('/.*[ㄱ-ㅎㅏ-ㅣ가-힣]+.*/', $content) ) {
+		if ( !preg_match("/[\xA1-\xFE][\xA1-\xFE]/", $content) ) {
 		    return Warning::make($warning, 0, 'content', '잘못된 접근입니다.');
 		}
 
