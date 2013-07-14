@@ -29,6 +29,14 @@ if( strstr($phpself, '/about') ){
 				<!-- Responsive Navbar Part 2: Place all navbar contents you want collapsed withing .navbar-collapse.collapse. -->
 				<div class="nav-collapse collapse">
 					<span style="display: none"><?=$today_cnt?></span>
+					<p class="navbar-text pull-right">
+						<? if ( $g->au['id']): ?>
+						<a href="#" onclick="return false;"class="navbar-link"><?=$g->au['nickname'] ? $g->au['nickname'] : $g->au['email']?></a>
+						/ <a href="/sign/logout.php">logout</a>
+						<? else: ?>
+						<a href="/sign/index.php">Sign in/up</a>
+						<? endif;?>
+		            </p>
 					<ul class="nav">
 						<li class="<?=$menu_slt['home']?>"><a href="/">Home</a></li>
 						<li class="<?=$menu_slt['about']?>"><a href="<?=URL_WEB?>/about">About</a></li>

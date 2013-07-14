@@ -1,6 +1,6 @@
 <?php
 //error_reporting(E_ALL);
-
+session_start();
 require './include/startup.php';
 
 // 방문자 로그를 기록한다. (1분안에 재방문시엔 기록하지 않음)
@@ -25,5 +25,6 @@ $args = array(
 	'post_form' => './module/post_form.php',
 	'content' => './module/post.php',
 );
+
 import('./layout/default.php', $args);
 ?>

@@ -35,12 +35,14 @@ class GlobalObject {
 
 		if ( $name == 'access' ) {
 			require_once DIR_LIB.'/Access.php';
-			return $this->access = Access::singleton();
+            return $this->access = new Access();
 		}
-
+		
 		if ( $name == 'au' ) {
-			require_once DIR_LIB.'/AccessUser.php';
-			return $this->au = new AccessUser();
+			//require_once DIR_LIB.'/AccessUser.php';
+			//return $this->au = new AccessUser();
+			require_once DIR_LIB.'/Access.php';
+			return $this->au = Access::login_user();
 		}
 	}
 }
