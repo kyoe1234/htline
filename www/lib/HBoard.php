@@ -37,7 +37,11 @@ class HBoard {
 			return Warning::make($warning, 0, 'content', '내용을 입력해 주세요');
 		}
 
-		if ( !preg_match("/[\xA1-\xFE][\xA1-\xFE]/", $content) ) {
+		//if ( !preg_match("/[\xA1-\xFE][\xA1-\xFE]/", $content) ) {
+		$hangul_jamo = '\x{1100}-\x{11ff}'; 
+		$hangul_compatibility_jamo = '\x{3130}-\x{318f}'; 
+		$hangul_syllables = '\x{ac00}-\x{d7af}'; 
+		if ( !preg_match("/['.$hangul_jamo.$hangul_compatibility_jamo.$hangul_syllables.']+/u", $content) ) {
 		    return Warning::make($warning, 0, 'content', '잘못된 접근입니다.');
 		}
 
