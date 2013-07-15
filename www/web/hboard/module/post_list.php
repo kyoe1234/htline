@@ -33,8 +33,8 @@ foreach ( $post_list as $post ):
 		</div>
 
 		<div class="span2" style="text-align: right">
-			<? if ( $_a['user'] == 'momohoi' ): ?>
-				<a href="./post_block.php?user=<?=$_a['user']?>&ip=<?=$post['ip']?>" >block</a>
+			<? if ( $g->au['roleid'] == 'ADMIN' ): ?>
+				<a href="./post_block.php?ip=<?=$post['ip']?>" >block</a>
 			<? endif;?>
 
 			<span id="comment_cnt_<?=$post['id']?>">[<?=$comment_cnt?>]</span>

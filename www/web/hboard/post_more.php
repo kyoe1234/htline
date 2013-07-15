@@ -5,7 +5,6 @@ $tmp = ( $_a ) ? $_a : $_GET;
 
 $post_id = $tmp['post_id'];
 $offset_id = $tmp['offset_id'];
-$user = $tmp['user'];
 
 $limit = 20;
 
@@ -38,7 +37,6 @@ if ( $more_view ) {
 // 리스트를 가져온다.
 $args = array(
 	'post_list' => $post_list,
-	'user' => $user,
 );
 
 $html = import_ob(DIR_WEB.'/hboard/module/post_list.php', $args);
@@ -50,6 +48,5 @@ echo json_encode(array(
 	'result' => true,
 	'offset_id' => $offset_id,
 	'html' => $html,
-	'user' => $user,
 ));
 ?>

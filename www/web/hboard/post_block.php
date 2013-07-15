@@ -1,7 +1,8 @@
 <?
+session_start();
 require './include/startup.php';
 
-if ( $_GET['user'] != 'momohoi') {
+if ( $g->au['roleid'] != 'ADMIN') {
 	Alert::back('error!');
 }
 
