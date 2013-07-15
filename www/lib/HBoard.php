@@ -38,13 +38,17 @@ class HBoard {
 		}
 
 		//if ( !preg_match("/[\xA1-\xFE][\xA1-\xFE]/", $content) ) {
+		$tmp_content = str_replace('.', '', $content);
+		$tmp_content = str_replace('\'', '', $tmp_content);
+		
+		
 		$hangul_jamo = '\x{1100}-\x{11ff}'; 
 		$hangul_compatibility_jamo = '\x{3130}-\x{318f}'; 
 		$hangul_syllables = '\x{ac00}-\x{d7af}'; 
-		if ( !preg_match("/['.$hangul_jamo.$hangul_compatibility_jamo.$hangul_syllables.']+/u", $content) ) {
+		if ( !preg_match("/['.$hangul_jamo.$hangul_compatibility_jamo.$hangul_syllables.']+/u", $tmp_content) ) {
 		    return Warning::make($warning, 0, 'content', '잘못된 접근입니다.');
 		}
-
+		
 		// 차단된 ip인지 확인
 		$sql = "SELECT ip FROM ignoreip
 				WHERE type = 'Y'";
