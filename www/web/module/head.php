@@ -20,4 +20,4 @@
 	})();
 </script>
 
-<title>HoiTalk: 자유롭게 글을 남기세요.</title>
+<title><?=$g->var['layout_head_title']?></title>

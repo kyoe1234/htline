@@ -18,7 +18,7 @@ if ( !$ip ) {
 }
 
 // 타이틀
-$g->var['layout_head_title'] = 'HTLine: 자유롭게 글을 남기세요.';
+$g->var['layout_head_title'] = '호이톡 :: 자유롭게 글을 남기세요.';
 
 // list 페이지 출력
 $args = array(
