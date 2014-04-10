@@ -8,7 +8,11 @@ if ( !$post['id'] ) {
 }
 
 // 타이틀
-$g->var['layout_head_title'] = "호이톡 :: {$post['title']}";
+if ( $post['title'] ) {
+    $g->var['layout_head_title'] = "호이톡 :: {$post['title']}";
+} else {
+    $g->var['layout_head_title'] = "호이톡 :: 자유롭게 글을 남기세요.";
+}
 
 // view 페이지 출력
 $args = array(
