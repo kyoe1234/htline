@@ -36,7 +36,7 @@ class HComment {
 	 * @param $hid string 익명을위한 해쉬코드
 	 * @param $content string 내용
 	 * @param $warning object Warning 객체 참조
-	 * @return int htline.hcomment.id
+	 * @return int hcomment.id
 	 */
 	public static function add($owner, $owner_id, $hid, $content, &$warning = null) {
 		global $g;
@@ -65,7 +65,7 @@ class HComment {
 
 		// 추가
 		$g->db->query("
-			INSERT htline.hcomment SET
+			INSERT hcomment SET
 				owner = '{$owner}',
 				ownerid = '{$owner_id}',
 				hid = '{$hid}',
@@ -80,7 +80,7 @@ class HComment {
 
 		// rootid 변경
 		$g->db->query("
-			UPDATE htline.hcomment SET
+			UPDATE hcomment SET
 				rootid = {$insert_id}
 			WHERE id = {$insert_id}
 		");
@@ -92,11 +92,11 @@ class HComment {
 
 	/**
 	 * @brief 추가
-	 * @param $hcomment_id int 답글의 대상 htline.hcomment.id
+	 * @param $hcomment_id int 답글의 대상 hcomment.id
 	 * @param $hid string 익명을위한 해쉬코드
 	 * @param $content string 내용
 	 * @param $warning object Warning 객체 참조
-	 * @return int htline.hcomment.id
+	 * @return int hcomment.id
 	 */
 	public static function reply($hcomment_id, $hid, $content, &$warning = null) {
 		global $g;
@@ -122,7 +122,7 @@ class HComment {
 
 		// 추가
 		$g->db->query("
-			INSERT htline.hcomment SET
+			INSERT hcomment SET
 				rootid = '{$hcomment_id}',
 				owner = '{$hcomment->owner}',
 				ownerid = '{$hcomment->ownerid}',
@@ -142,7 +142,7 @@ class HComment {
 
 	/**
 	 * @brief 삭제
-	 * @param $hcomment_id int htline.hcomment.id
+	 * @param $hcomment_id int hcomment.id
 	 * @param $hid string 익명을위한 해쉬코드
 	 * @param $warning object Warning 객체 참조
 	 * @return boolean
@@ -163,7 +163,7 @@ class HComment {
 		*/
 
 		// 삭제할 id에 해당하는 rootid 개수를 구한다.
-		$sql = "SELECT COUNT(*) FROM htline.hcomment
+		$sql = "SELECT COUNT(*) FROM hcomment
 				WHERE rootid = {$hcomment_id}";
 		$count = $g->db->fetch_val($sql);
 
@@ -171,10 +171,10 @@ class HComment {
 
 		// 개수가 1이하면 삭제
 		if ( $count <= 1 ) {
-			$sql = "DELETE FROM htline.hcomment
+			$sql = "DELETE FROM hcomment
 					WHERE id = {$hcomment_id}";
 		} else {
-			$sql = "UPDATE htline.hcomment SET
+			$sql = "UPDATE hcomment SET
 						hid = NULL,
 						content = NULL,
 						createdate = NULL
@@ -215,7 +215,7 @@ class HComment {
 			return 0;
 		}
 
-		$sql = "SELECT COUNT(*) FROM htline.hcomment
+		$sql = "SELECT COUNT(*) FROM hcomment
 				WHERE owner = '{$owner}'
 					AND ownerid = {$owner_id}";
 		return (int)$g->db->fetch_val($sql);
@@ -223,7 +223,7 @@ class HComment {
 
 	/**
 	 * @brief 댓글 블라인드 처리
-	 * @param $hcomment_id int htline.hcomment.id
+	 * @param $hcomment_id int hcomment.id
 	 * @param $hid string 익명을위한 해쉬코드
 	 * @param $warning object Warning 객체 참조
 	 * @return boolean
@@ -250,7 +250,7 @@ class HComment {
 		}
 
 		$g->db->query("
-			UPDATE htline.hcomment SET
+			UPDATE hcomment SET
 					blind = '{$value}'
 				WHERE id = '{$hcomment_id}'
 		");
@@ -261,14 +261,14 @@ class HComment {
 
 	/**
 	 * @brief 생성자
-	 * @param $hcomment_id int htline.hcomment.id
+	 * @param $hcomment_id int hcomment.id
 	 */
 	public function __construct($hcomment_id) {
 		global $g;
 
 		if ( preg_match('/^[1-9][0-9]*$/', $hcomment_id) ) {
 			$row = $g->db->fetch_row("
-				SELECT * FROM htline.hcomment
+				SELECT * FROM hcomment
 				WHERE id = {$hcomment_id}
 			");
 

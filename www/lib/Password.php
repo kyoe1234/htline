@@ -112,7 +112,7 @@ class Password {
         $email = trim($g->db->escape($email));
 
         $user_id = $g->db->fetch_val("
-            SELECT id FROM htline.user
+            SELECT id FROM user
             WHERE email = '{$email}'
         ");
         if ( !$user_id ) return '';
@@ -124,7 +124,7 @@ class Password {
 
         // 비밀번호 변경
         $g->db->query("
-            UPDATE htline.user SET
+            UPDATE user SET
                 pw = '{$c_password}'
             WHERE id = {$user_id}
         ");
@@ -136,7 +136,7 @@ class Password {
      * @brief 이메일과 비밀번호 인증. 인증된 회원의 id를 반환
      * @param $email string 이메일
      * @param $pw string 비밀번호
-     * @return int htline.user.id 오류시 0반환
+     * @return int user.id 오류시 0반환
      */
     public static function auth($email, $pw) {
         global $g;
@@ -145,7 +145,7 @@ class Password {
         $pw = sha1($pw);
 
         $user_id = $g->db->fetch_val("
-            SELECT id FROM htline.user
+            SELECT id FROM user
             WHERE email = '{$email}'
                 AND pw = '{$pw}'
         ");
@@ -155,7 +155,7 @@ class Password {
 
     /**
      * @brief 로그인암호 변경
-     * @param $user_id int htline.user.id
+     * @param $user_id int user.id
      * @param $oldpw string 기존 로그인암호
      * @param $newpw string 새 로그인암호
      * @param $checkpw string 확인 암호
@@ -187,7 +187,7 @@ class Password {
 
         // 암호변경
         $g->db->query("
-            UPDATE htline.user SET
+            UPDATE user SET
                 pw = '{$pw}'
             WHERE id = {$user_id}
 

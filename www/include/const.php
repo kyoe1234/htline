@@ -42,10 +42,18 @@ define('URL_MOBILE_STATIC', 'http://'.DOMAIN_MOBILE); // 모바일 정적파일
 
 
 ## DB ##
+/*
 define('MYSQL_HOST', 'localhost');
 define('MYSQL_USER', 'momohoi');
 define('MYSQL_PW', 'momohoi1008');
 define('MYSQL_DB', 'htline');
+define('MYSQL_PORT', 3306);
+define('MYSQL_SOCKET', null);
+*/
+define('MYSQL_HOST', 'localhost');
+define('MYSQL_USER', 'u839082462_kyoe');
+define('MYSQL_PW', 'lkhoeao1008');
+define('MYSQL_DB', 'u839082462_hoi');
 define('MYSQL_PORT', 3306);
 define('MYSQL_SOCKET', null);
 

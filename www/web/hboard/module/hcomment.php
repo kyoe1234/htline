@@ -1,5 +1,8 @@
 <?php
-require './include/startup.php';
+//require './include/startup.php';
+session_start();
+require_once('../../include/env.php');
+
 require_once DIR_LIB.'/HComment.php';
 
 $owner = $_a['owner'];
@@ -8,7 +11,7 @@ $owner_id = $_a['ownerid'];
 
 <div id="hcmt_group_<?=$owner_id?>" class="row show-grid">
 	<?
-	$sql = "SELECT * FROM htline.hcomment
+	$sql = "SELECT * FROM hcomment
 			WHERE owner = 'hboard'
 				AND ownerid = {$owner_id}
 			ORDER BY rootid ASC, id ASC";

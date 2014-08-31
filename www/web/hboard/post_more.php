@@ -1,5 +1,7 @@
 <?php
-require_once './include/startup.php';
+//require_once './include/startup.php';
+session_start();
+require_once('../../include/env.php');
 
 $tmp = ( $_a ) ? $_a : $_GET;
 
@@ -19,7 +21,7 @@ if ( $post_id ) {
 
 // 더보기 유무
 $limit_over = $limit + 1;
-$sql = "SELECT * FROM htline.hboard
+$sql = "SELECT * FROM hboard
 		{$where}
 		ORDER BY id DESC
 		LIMIT {$limit_over}";

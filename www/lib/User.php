@@ -7,7 +7,7 @@ require_once DIR_LIB.'/Role.php';
 class User extends ArrayObject {
     /**
      * @brief 생성자
-     * @param $user_id int htline.user.id
+     * @param $user_id int user.id
      */
     public function __construct($user_id) {
         global $g;

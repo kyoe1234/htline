@@ -1,6 +1,8 @@
 <?
+//require './include/startup.php';
+
 session_start();
-require './include/startup.php';
+require_once('../../include/env.php');
 
 if ( $g->au['roleid'] != 'ADMIN') {
 	Alert::back('error!');
@@ -11,14 +13,14 @@ if ( !$_GET['ip'] ) {
 }
 
 // ip block
-$sql = "INSERT htline.ignoreip SET
+$sql = "INSERT ignoreip SET
 			ip = '{$_GET['ip']}',
 			type = 'Y',
 			createdate = NOW()";
 $g->db->query($sql);
 
 // delete
-$sql = "DELETE FROM htline.hboard
+$sql = "DELETE FROM hboard
 		WHERE ip = '{$_GET['ip']}'";
 $g->db->query($sql);
 

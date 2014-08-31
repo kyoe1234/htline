@@ -1,5 +1,8 @@
 <?php
-require './include/startup.php';
+//require './include/startup.php';
+session_start();
+require_once('../../include/env.php');
+
 require_once DIR_LIB.'/HBoard.php';
 
 // 타이틀

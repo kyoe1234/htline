@@ -14,7 +14,7 @@ class Join {
      * @param $checkpw string 비빌번호 확인
 	 * @param $nick_name string 닉네임
      * @param $warning object Warning 객체 참조
-     * @return int htline.user.id
+     * @return int user.id
      */
     public static function signup($email, $pw, $checkpw, $nick_name = null, &$warning = null) {
         global $g;

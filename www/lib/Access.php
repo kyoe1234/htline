@@ -62,7 +62,7 @@ class Access {
         $user_id = $_SESSION['user_id'];
 		
         if ( $user_id ) {
-            $user = $user_data = $g->db->fetch_row("SELECT * FROM htline.user WHERE id = '{$user_id}'");
+            $user = $user_data = $g->db->fetch_row("SELECT * FROM user WHERE id = '{$user_id}'");
         } else {
             $user = array();
         }

@@ -88,7 +88,7 @@ class Role {
 
     /**
      * @brief 회원의 롤을 적용한다. 관리자롤은 적용/변경 모두 불가능
-     * @param $user_id int htline.user.id
+     * @param $user_id int user.id
      * @param $role_id string 롤id
      * @return boolean
      */
@@ -100,7 +100,7 @@ class Role {
             || $role_id == self::ID_ADMIN ) return false;
 
         $g->db->query("
-            UPDATE htline.user SET
+            UPDATE user SET
                 roleid = '{$role_id}'
             WHERE id = {$user_id}
         ");

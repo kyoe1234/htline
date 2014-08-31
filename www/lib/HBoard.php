@@ -5,7 +5,7 @@
 class HBoard {
 	/**
 	 * @brief 글을 반환한다.
-	 * @param $post_id int htline.hboard.id
+	 * @param $post_id int hboard.id
 	 * @return array
 	 */
 	public static function get_post($post_id) {
@@ -13,7 +13,7 @@ class HBoard {
 
 		if ( !preg_match('/^[1-9][0-9]*$/', $post_id) ) return array();
 
-		$sql = "SELECT * FROM htline.hboard
+		$sql = "SELECT * FROM hboard
 					WHERE id = {$post_id}";
 		return $g->db->fetch_row($sql);
 	}
@@ -24,7 +24,7 @@ class HBoard {
 	 * @param $title string 제목 (필수 입력사항 아님)
 	 * @param $content string 글
 	 * @param $warning object Warning 객체 참조
-	 * @return int htline.hboard.id
+	 * @return int hboard.id
 	 */
 	public static function add($hid, $title, $content, &$warning = null) {
 		global $g;
@@ -60,7 +60,7 @@ class HBoard {
 		// 글 등록
 		$content = $g->db->escape($content);
 		$g->db->query("
-			INSERT htline.hboard SET
+			INSERT hboard SET
 				hid = '{$hid}',
 				title = '{$title}',
 				content = '{$content}',
@@ -76,7 +76,7 @@ class HBoard {
 
 	/**
 	 * @brief 수정
-	 * @param $post_id int htline.hboard.id
+	 * @param $post_id int hboard.id
 	 * @param $content string 글
 	 * @param $warning object Warning 객체 참조
 	 * @return boolean
@@ -92,7 +92,7 @@ class HBoard {
 
 		$content = $g->db->escape($content);
 		$g->db->query("
-			UPDATE htline.hboard SET
+			UPDATE hboard SET
 				content = '{$content}',
 				blind = 'N',
 				ip = '{$_SERVER['REMOTE_ADDR']}',
@@ -104,7 +104,7 @@ class HBoard {
 
 	/**
 	 * @brief 삭제
-	 * @param $post_id int htline.hboard.id
+	 * @param $post_id int hboard.id
 	 * @param $warning object Warning 객체 참조
 	 * @return boolean
 	 */
@@ -116,7 +116,7 @@ class HBoard {
 		if ( !$post ) return true;
 
 		$g->db->query("
-			DELETE FROM htline.hboard
+			DELETE FROM hboard
 			WHERE id = '{$post_id}'");
 
 		return Warning::make($warning, true);
@@ -124,7 +124,7 @@ class HBoard {
 
 	/**
 	 * @brief 댓글 블라인드 처리
-	 * @param $hcomment_id int htline.hcomment.id
+	 * @param $hcomment_id int hcomment.id
 	 * @param $hid string 익명을위한 해쉬코드
 	 * @param $warning object Warning 객체 참조
 	 * @return boolean
@@ -144,7 +144,7 @@ class HBoard {
 		}
 
 		$g->db->query("
-			UPDATE htline.hboard SET
+			UPDATE hboard SET
 					blind = '{$value}'
 			WHERE id = '{$post_id}'");
 

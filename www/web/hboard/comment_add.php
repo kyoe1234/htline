@@ -1,5 +1,8 @@
 <?php
-require './include/startup.php';
+//require './include/startup.php';
+session_start();
+require_once('../../include/env.php');
+
 require_once DIR_LIB.'/HComment.php';
 
 function response($result, $msg = '', $errcode = '') {
@@ -10,7 +13,7 @@ function response($result, $msg = '', $errcode = '') {
 			$html = import_ob(DIR_WEB.'/hboard/module/hcomment.php', array('owner' => $_GET['owner'], 'ownerid' => $_GET['owner_id']));
 		}
 
-		$sql = "SELECT COUNT(ownerid) AS cnt FROM htline.hcomment WHERE ownerid = '{$_GET['owner_id']}'";
+		$sql = "SELECT COUNT(ownerid) AS cnt FROM hcomment WHERE ownerid = '{$_GET['owner_id']}'";
 		$comment_cnt = $g->db->fetch_val($sql);
 
 		echo json_encode(array(

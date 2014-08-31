@@ -1,11 +1,10 @@
 <?php
-header('location: ./hboard');
-exit;
+//header('location: ./hboard');
+//exit;
 
-
-//error_reporting(E_ALL);
-//chdir('./hboard');
-//require './include/startup.php';
+error_reporting(E_ALL);
+chdir('./hboard');
+require './include/startup.php';
 
 /*
 // 모바일 기기로 접속시
@@ -19,6 +18,6 @@ if ( MOBILE_AGENT ) {
 }
 */
 
-//$g->var['layout_head_title'] = 'HTLine';
-//require './layout/default.php';
+$g->var['layout_head_title'] = 'HTLine';
+require './layout/default.php';
 ?>

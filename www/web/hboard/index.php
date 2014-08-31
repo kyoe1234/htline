@@ -1,17 +1,18 @@
 <?php
 //error_reporting(E_ALL);
 session_start();
-require './include/startup.php';
+//require './include/startup.php';
+require_once('../../include/env.php');
 
 // 방문자 로그를 기록한다. (1분안에 재방문시엔 기록하지 않음)
 $log_time = date('Y-m-d H:i:s', strtotime('-1 minutes', time()));
-$sql = "SELECT ip FROM htline.visitorlog
+$sql = "SELECT ip FROM visitorlog
 		WHERE ip = '{$_SERVER['REMOTE_ADDR']}'
 			AND createdate > '{$log_time}'";
 $ip = $g->db->fetch_val($sql);
 
 if ( !$ip ) {
-	$sql = "INSERT htline.visitorlog SET
+	$sql = "INSERT visitorlog SET
 		ip = '{$_SERVER['REMOTE_ADDR']}',
 		createdate = NOW()";
 	$g->db->query($sql);

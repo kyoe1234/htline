@@ -33,7 +33,7 @@ class Account {
 
     /**
      * @brief 사용자 id의 존재 여부를 반환한다.
-     * @param $user_id int htline.user.id
+     * @param $user_id int user.id
      * @return boolean
      */
     public static function exists($user_id) {
@@ -49,7 +49,7 @@ class Account {
         global $g;
 		
         $result = $g->db->fetch_val("
-            SELECT email FROM htline.user
+            SELECT email FROM user
             WHERE email = '{$email}'
         ");
 		print_r($result);
@@ -69,7 +69,7 @@ class Account {
     /**
      * @brief 사용가능한 이메일인지 여부 확인
      * @param $email string 이메일
-     * @param $user_id int htline.user.id
+     * @param $user_id int user.id
      * @param $warning object Warning 객체 참조
      * @return boolean
      */
@@ -92,7 +92,7 @@ class Account {
 
     /**
      * @brief 계정 데이터를 반환한다.
-     * @param $user_id int htline.user.id
+     * @param $user_id int user.id
      * @return array
      */
     public static function data($user_id) {
@@ -101,7 +101,7 @@ class Account {
         if ( !preg_match('/^[1-9][0-9]*$/', $user_id) ) return array();
 
         return $g->db->fetch_row("
-            SELECT * FROM htline.user
+            SELECT * FROM user
             WHERE id = {$user_id}
         ");
     }
@@ -111,7 +111,7 @@ class Account {
      * @param $email string 이메일
 	 * @param $nick_name string 닉네임
      * @param $warning object Warning 객체 참조
-     * @return int 추가된 계정의 htline.user.id 오류시 0
+     * @return int 추가된 계정의 user.id 오류시 0
      */
     public static function add($email, $nick_name, &$warning = null) {
         global $g;
@@ -123,7 +123,7 @@ class Account {
         }
 		
         $g->db->query("
-            INSERT htline.user SET
+            INSERT user SET
                 email = '{$email}',
                 nickname = '{$nick_name}',
             	createdate = NOW()
@@ -137,7 +137,7 @@ class Account {
 
     /**
      * @brief 계정 정보 수정
-     * @param $user_id int htline.user.id
+     * @param $user_id int user.id
      * @param $email string 이메일
 	 * @param $nick_name string 닉네임
      * @param $warning object Warning 객체 참조
@@ -157,7 +157,7 @@ class Account {
         }
 
         $g->db->query("
-            UPDATE htline.user SET
+            UPDATE user SET
                 email = '{$email}'
                 nickname = {$nick_name},
             WHERE id = {$user_id}
@@ -168,7 +168,7 @@ class Account {
 
    /**
     * @brief 계정정보를 지운다.(삭제가 아님)
-    * @param $user_id int htline.user.id
+    * @param $user_id int user.id
     * @return boolean
     */
     public static function erase($user_id) {
@@ -177,12 +177,12 @@ class Account {
         if ( !preg_match('/^[1-9][0-9]*$/', $user_id) ) return false;
 
         $email = $g->db->fetch_val("
-            SELECT email FROM htline.user
+            SELECT email FROM user
             WHERE id = {$user_id}
         ");
 
         $g->db->query("
-            UPDATE htline.user SET
+            UPDATE user SET
                 email = null,
                 emailleave = '{$email}',
                 pw = null
