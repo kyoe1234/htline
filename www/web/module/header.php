@@ -39,7 +39,7 @@ if( strstr($phpself, '/about') ){
 		            </p>
 					<ul class="nav">
 						<li class="<?=$menu_slt['home']?>"><a href="/">Home</a></li>
-						<li class="<?=$menu_slt['about']?>"><a href="<?=URL_WEB?>/about">About</a></li>
+						<li class="<?=$menu_slt['about']?>"><a href="<?=URL_WEB?>/web/about">About</a></li>
 						<li><a href="#contact">Contact</a></li>
 						<!-- Read about Bootstrap dropdowns at http://twitter.github.com/bootstrap/javascript.html#dropdowns -->
 						<li class="dropdown">
