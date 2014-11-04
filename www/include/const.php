@@ -29,9 +29,9 @@ define('DIR_MOBILE', DIR_ROOT.'/mobile'); // 모바일 루트
 
 ## URL ##
 // 웹
-define('URL_WEB', 'http://'.DOMAIN_WEB);
-define('URL_WEB_STATIC', 'http://'.DOMAIN_WEB); // 웹 정적파일
-define('URL_WEB_FILE', 'http://'.DOMAIN_WEB.'/file');
+define('URL_WEB', 'http://'.DOMAIN_WEB.'/web');
+define('URL_WEB_STATIC', 'http://'.DOMAIN_WEB.'/web'); // 웹 정적파일
+define('URL_WEB_FILE', 'http://'.DOMAIN_WEB.'/web/file');
 define('URL_WEB_TMP', URL_WEB_FILE.'/tmp');
 // 모바일
 define('URL_MOBILE', 'http://'.DOMAIN_MOBILE);

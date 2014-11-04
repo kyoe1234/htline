@@ -1,5 +1,8 @@
 <?php
-require_once './include/startup.php';
+//require_once './include/startup.php';
+session_start();
+require_once('../../include/env.php');
+
 require_once DIR_LIB.'/Join.php';
 
 $P = atrim($_POST);
